@@ -1,50 +1,64 @@
+# def max_acorns_collected(grid, t, h, f):
+#     aux = [[0] * h for _ in range(t)]
+
+#     for row in range(t):
+#         aux[row][h - 1] = grid[row][h - 1]
+
+#     for col in range(h - 2, -1, -1):
+#         for row in range(t):
+#             max_acorns = aux[row][col + 1]
+
+#             for arbol in range(t):
+#                 if arbol != row and col + f < h:
+#                     max_acorns = max(max_acorns, aux[arbol][col + f])
+
+#             aux[row][col] = max_acorns + grid[row][col]
+
+#     # max_total_acorns = max(aux[row][0] for row in range(t))
+#     return max(aux[row][0] for row in range(t))
+
+
 def max_acorns_collected(grid, t, h, f):
-    dp = [[0] * h for _ in range(t)]
-    for i in range(h):
-        dp[t - 1][i] = grid[t - 1][i]
-    for i in range(t - 2, -1 , -1):
-        for j in range(h):
-            dp[i][j] = grid[i][j] + dp[i + 1][j]
-            for k in range(h):
-                if j != k:
-                    dp[i][j] = max(dp[i][j], grid[i][j] + dp[i + 1][k] - f)
-    for row in dp:
-        print(row)
-    return max(dp[0])
+    aux = [[0] * h for _ in range(t)]
+    max_per_h = [0] * h
 
-grid = [
-    [1, 0, 0, 1, 0, 0, 0, 0, 0, 1],
-    [0, 0, 1, 0, 1, 0, 1, 1, 2, 0],
-    [0, 0, 1, 1, 1, 1, 0, 0, 1, 0]
-]
+    for row in range(t):
+        aux[row][h - 1] = grid[row][h - 1]
 
-t = len(grid)
-h = len(grid[0])
-f = 2
+    for col in range(h - 2, -1, -1):
+        for arbol in range(t):
+            if col + f < h:
+                aux[arbol][col] = grid[arbol][col] + max(aux[arbol][col + 1], max_per_h[col + f])
+            else:
+                aux[arbol][col] = grid[arbol][col] + max(aux[arbol][col + 1], 0)
+            max_per_h[col] = max(max_per_h[col], aux[arbol][col])
 
-result = max_acorns_collected(grid, t, h, f)
-print(result)
+    res = 0
+    for arbol in range(t):
+        res = max(res, aux[arbol][0])
+    return res
 
 
-# def main():
-#     datasets = int(input())
-#     rtas = []
-#     for _ in range(datasets):
-#         t, h, f = list(map(int, input().split(" ")))
-#         grid = []  # matriz de h x t
-#         for _ in range(t):
-#             acorns = list(map(int, input().split(" ")))
-#             row = [0] * h
-#             for a in acorns[1:]:
-#                 row[a - 1] += 1
-#             grid.append(row)
-#         for row in grid:
-#             print(row)
-#         rtas.append(max_acorns_collected(grid, t, h, f))
-#     print(rtas)
+def main():
+    datasets = int(input())
+    rtas = []
+    for _ in range(datasets):
+        t, h, f = list(map(int, input().split(" ")))
+        grid = []
+        for _ in range(t):
+            acorns = list(map(int, input().split(" ")))
+            row = [0] * h
+            for a in acorns[1:]:
+                row[a - 1] += 1
+            grid.append(row)
+        rtas.append(max_acorns_collected(grid, t, h, f))
+    final_input = int(input())
+    if final_input == 0:
+        for rta in rtas:
+            print(rta)
 
 
-# main()
+main()
 
 """
 1
