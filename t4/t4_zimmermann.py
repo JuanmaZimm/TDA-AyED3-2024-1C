@@ -1,27 +1,18 @@
-def compararAux(a: str, b: str) -> str:
+def comparar(a: str, b: str) -> str:
     if (a == b):
         return True
-    else:
-        return sorted(a) == sorted(b)
 
+    if (len(a) % 2 != 0 or len(b) % 2 != 0):
+        return False
 
-def comparar(a: str, b: str) -> str:
-    if (a == a):
-        return "YES"
-    else:
-        a1: str = a[:len(a)//2]
-        a2: str = a[len(a)//2:]
-        b1: str = b[:len(b)//2]
-        b2: str = b[len(b)//2:]
-        if ((a1 == b1 and a2 == b2) or (a1 == b2 and a2 == b1)):
-            return "YES"
-        else:
-            return "NO"
+    mitad: int = len(a) // 2
+
+    return (comparar(a[:mitad], b[mitad:]) and comparar(a[mitad:], b[:mitad])) or (comparar(a[:mitad], b[:mitad]) and comparar(a[mitad:], b[mitad:]))
 
 
 a: str = input()
 b: str = input()
-if (a == b):
+if (comparar(a, b)):
     print("YES")
 else:
-    print(comparar(a, b))
+    print("NO")
