@@ -16,3 +16,4 @@ if (comparar(a, b)):
     print("YES")
 else:
     print("NO")
+# Usuario de vJudge: JuanmaZimm
