@@ -37,7 +37,7 @@ int main(){
     int nCasos;
     cin >> nCasos;
     forn(i, nCasos){
-        int n;
+        int n = 0;
         cin >> n;
         int alturas[n];
         int anchos[n];
@@ -50,4 +50,4 @@ int main(){
         solve(i+1, n, alturas, anchos);
     }
     return 0;
-}
+} // usuario de vJudge: JuanmaZimm
