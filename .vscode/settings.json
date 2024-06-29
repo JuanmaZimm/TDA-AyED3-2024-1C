@@ -1,7 +1,8 @@
 {
   "files.associations": {
     "*.ejs": "html",
-    "cstring": "cpp"
+    "cstring": "cpp",
+    "ostream": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
