@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Juanma/Desktop/Juanma/UBA/2024-1C/tda/t9",
-      "program": "c:/Users/Juanma/Desktop/Juanma/UBA/2024-1C/tda/t9/build/Debug/outDebug",
+      "cwd": "c:/Users/Juanma/Desktop/Juanma/UBA/2024-1C/tda/t11",
+      "program": "c:/Users/Juanma/Desktop/Juanma/UBA/2024-1C/tda/t11/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
